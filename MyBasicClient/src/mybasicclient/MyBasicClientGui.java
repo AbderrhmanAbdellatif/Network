@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author sefercanaydas
+ * @author 14Mst
  */
 public class MyBasicClientGui extends javax.swing.JFrame {
 
