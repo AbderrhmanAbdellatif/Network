@@ -10,27 +10,37 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
  * @author Toshiba
  */
 public class Server {
+    
+    public static ServerSocket serverSocket;// server port numarasi 
+    public static Socket clinetSocket;//clinet port ve ip 
+    public static ArrayList<SoketClinetThread> clinetList;//clinetleri  sayisi icin
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         System.out.println(" server class ");
-        ServerSocket serversocket = new ServerSocket(1234);//burda gelen port yani  bu port serverin port  clinet baglainma icin kullaniyor  
+        // ServerSocket serversocket = new ServerSocket(1234);//burda gelen port yani  bu port serverin port  clinet baglainma icin kullaniyor  
         //   Socket socket=null;
         // while (!serversocket.isClosed()) {            
-        Socket socket = serversocket.accept();// server acma  kanali 
-        System.out.println("clinet is connected ");
-        ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());//clinetden gelen mesaji icin almak
-        System.out.println(objectInputStream.readObject().toString());//gelen  mesaji yazdiriyoruz
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());//yazdigimiz mesaj  gonderiyoruz 
-        objectOutputStream.writeObject(" Hi I am the server ");
-        //  }
-        serversocket.close();
-        socket.close();
-    }
+        serverSocket = new ServerSocket(1234);
+        clinetList = new ArrayList<SoketClinetThread>();
+        while (!serverSocket.isClosed()) {
+            clinetSocket = serverSocket.accept();
+            System.out.println("clinet is connected ");
+            SoketClinetThread newclinet = new SoketClinetThread(clinetSocket);// burada  gelen  soket ile clinet bilgisi aliyoruz
+            clinetList.add(newclinet); // gelen  clinetleri icin ayir bir array ekliyoruz
+            System.out.println(" bir clinet bagladi");
+            newclinet.sendmesaj(newclinet.no +" . clinet geldi ");
+        }
 
+        //  }
+        serverSocket.close();
+        clinetSocket.close();
+    }
+    
 }
