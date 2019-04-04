@@ -30,7 +30,7 @@ public class Server {
         serverSocket = new ServerSocket(1234);
         clinetList = new ArrayList<SoketClinetThread>();
         while (!serverSocket.isClosed()) {
-            clinetSocket = serverSocket.accept();
+            clinetSocket = serverSocket.accept(); 
             System.out.println("clinet is connected ");
             SoketClinetThread newclinet = new SoketClinetThread(clinetSocket);// burada  gelen  soket ile clinet bilgisi aliyoruz
             clinetList.add(newclinet); // gelen  clinetleri icin ayir bir array ekliyoruz
