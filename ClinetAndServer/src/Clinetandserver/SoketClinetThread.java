@@ -66,5 +66,6 @@ public class SoketClinetThread {
     public void sendmesaj(String mesaj) throws IOException {
         this.outputStream.writeObject(mesaj);// gelen mesaj gondermek  icin
     }
+    //ref :http://tutorials.jenkov.com/java-concurrency/creating-and-starting-threads.html
 
 }
