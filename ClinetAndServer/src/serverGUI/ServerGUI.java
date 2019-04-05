@@ -8,6 +8,7 @@ package serverGUI;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -19,9 +20,11 @@ public class ServerGUI extends javax.swing.JFrame {
      * Creates new form ServerGUI
      */
     Server server;
-
+    public static DefaultListModel defaultListModel = new DefaultListModel();
+    
     public ServerGUI() {
         initComponents();
+        this.clinetlistis.setModel(defaultListModel);
     }
 
     /**
@@ -40,8 +43,8 @@ public class ServerGUI extends javax.swing.JFrame {
         StartServerBtn = new javax.swing.JButton();
         stopServerBtn = new javax.swing.JButton();
         SendBroadcastBtn = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        show = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        clinetlistis = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,26 +80,21 @@ public class ServerGUI extends javax.swing.JFrame {
             }
         });
 
-        show.setColumns(20);
-        show.setRows(5);
-        jScrollPane2.setViewportView(show);
+        jScrollPane3.setViewportView(clinetlistis);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 63, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Port)
+                                .addComponent(Port, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(SetServerbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -104,8 +102,11 @@ public class ServerGUI extends javax.swing.JFrame {
                                     .addComponent(stopServerBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(SendBroadcastBtn)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane3)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,9 +125,9 @@ public class ServerGUI extends javax.swing.JFrame {
                         .addComponent(stopServerBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SendBroadcastBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,9 +208,9 @@ public class ServerGUI extends javax.swing.JFrame {
     private javax.swing.JButton SendBroadcastBtn;
     private javax.swing.JButton SetServerbtn;
     private javax.swing.JButton StartServerBtn;
+    public static javax.swing.JList<String> clinetlistis;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTextArea show;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton stopServerBtn;
     // End of variables declaration//GEN-END:variables
 }

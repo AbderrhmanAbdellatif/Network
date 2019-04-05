@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  * @author Toshiba
  */
 public class SoketClinetThread {
-
+    
     public class ListenClinetThread extends Thread {
-
+        
         private SoketClinetThread clinetThread; //her clinet geldiginde 
 
         public ListenClinetThread(SoketClinetThread clinetThread) {//object yapici 
@@ -37,8 +37,8 @@ public class SoketClinetThread {
                 try {
                     //clinet geldiyse
                     Object mesaj = this.clinetThread.inputStream.readObject();
-                     //System.out.println(" Hi " + mesaj.toString());
-                      ServerGUI.show.setText(" Hi " + mesaj.toString());
+                    //System.out.println(" Hi " + mesaj.toString());
+                    ServerGUI.defaultListModel.addElement("hi " + mesaj.toString());
                 } catch (IOException ex) {
                     Logger.getLogger(SoketClinetThread.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -63,7 +63,7 @@ public class SoketClinetThread {
         this.listenClinetThread.start();//To start the Java thread you will call its start() method
 
     }
-
+    
     public void sendmesaj(String mesaj) throws IOException {
         this.outputStream.writeObject(mesaj);// gelen mesaj gondermek  icin
     }
