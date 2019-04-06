@@ -5,6 +5,8 @@
  */
 package connect4;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Toshiba
@@ -56,7 +58,7 @@ public class connect4WithoutGUI {
     public void check_winner(int row, int column, String letter) {//4 oldugu zaman bu  fonksiyon gidiyor
         if (check_column(column, letter) || check_row(row, letter)
                 || check_downward_diagonal() || check_upward_diagonal()) {
-           control = true; // oyun bitigini 
+            control = true; // oyun bitigini 
         }
     }
 
@@ -137,8 +139,59 @@ public class connect4WithoutGUI {
     }
 
     public static void main(String[] args) {
-        connect4WithoutGUI connect4Game = new connect4WithoutGUI();
-        connect4Game.show_board();
-    }
+        connect4WithoutGUI connect_4 = new connect4WithoutGUI();
+        connect_4.show_board();
+        Scanner input1, input2, player1, player2;
+        System.out.println("\nWelcome to Connect 4. Hope you enjoy the game.\n");
+        player1 = new Scanner(System.in);
+        player2 = new Scanner(System.in);
+        System.out.print("Enter player 1 name :  ");
+        String player_1 = player1.next();
+        System.out.print("Enter player 2 name :  ");
+        String player_2 = player2.next();
 
+        while (true) {
+
+            System.out.println();
+            System.out.print(player_1 + ", your symbol is 'O'. Enter column you want to mark : ");
+            input1 = new Scanner(System.in);
+            int column = input1.nextInt();
+            while (column > 6 || column < 1) {//eger fazla colum girirse
+                System.out.print("Please enter valid column: ");
+                column = input1.nextInt();
+            }
+
+            connect_4.place_item(column - 1, "O");
+            connect_4.show_board();
+
+            if (connect_4.control == true) {
+                System.out.println();
+                System.out.println(player_1 + " has won the game !!!! ");
+                break;
+            }
+
+            System.out.println();
+            System.out.print(player_2 + ", your symbol is 'X'. Enter column you want to mark : ");
+            input2 = new Scanner(System.in);
+            int column2 = input2.nextInt();
+            while (column2 > 6 || column2 < 1) {
+                System.out.print("Please enter valid column: ");
+                column2 = input2.nextInt();
+            }
+
+            connect_4.place_item(column2 - 1, "X");
+            connect_4.show_board();
+
+            if (connect_4.control == true) {
+                if (connect_4.control== true) {
+                    System.out.println();
+                    System.out.println(player_2 + " has won the game !!!! ");
+                    break;
+                }
+            }
+
+        }
+    }
 }
+
+    
