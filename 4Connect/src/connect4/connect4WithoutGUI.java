@@ -160,16 +160,13 @@ public class connect4WithoutGUI {
                 System.out.print("Please enter valid column: ");
                 column = input1.nextInt();
             }
-
             connect_4.place_item(column - 1, "O");
             connect_4.show_board();
-
             if (connect_4.control == true) {
                 System.out.println();
                 System.out.println(player_1 + " has won the game !!!! ");
                 break;
             }
-
             System.out.println();
             System.out.print(player_2 + ", your symbol is 'X'. Enter column you want to mark : ");
             input2 = new Scanner(System.in);
@@ -178,7 +175,6 @@ public class connect4WithoutGUI {
                 System.out.print("Please enter valid column: ");
                 column2 = input2.nextInt();
             }
-
             connect_4.place_item(column2 - 1, "X");
             connect_4.show_board();
 
