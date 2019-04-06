@@ -18,11 +18,19 @@ public class Game extends javax.swing.JFrame {
      */
     connect4WithoutGUI gUI = new connect4WithoutGUI();
     String Arrayofimg[] = {"red.jpg", "yellow.jpg", "white.png"};
-    JLabel jLabels[];
+    JLabel[][] board;
+    boolean control = false;
 
     public Game() {
         initComponents();
-
+        board = new JLabel[][]{
+            {i1, i2, i3, i4, i5, i6},
+            {i7, i8, i9, i10, i11, i12},
+            {i13, i14, i15, i16, i17, i18},
+            {i19, i20, i21, i22, i23, i24},
+            {i25, i26, i27, i28, i29, i30},
+            {i31, i32, i33, i34, i35, i36}
+        };
         this.setLocationRelativeTo(this);
         showicon();
     }
@@ -452,11 +460,108 @@ public class Game extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if ("A".equals(player1txt.getText())) {
-            i1.setIcon(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])));
+            for (int i = 0; i < board.length; i++) {
+                for (int j = 0; j < board.length; j++) {
 
+                    board[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])));
+
+                }
+            }
         }
 
     }//GEN-LAST:event_PlayBtuActionPerformed
+    public void place_item(int column, String letter) {//hangi kolum  ve o zamandaki  oyuncu harfi  girecek    
+        for (int i = board.length - 1; i >= 0; i--) {
+            if (board[i][column] == " ") {// kolun bos ise 
+                board[i][column] = letter;
+                check_winner(i, column, letter);
+                break;
+            }
+        }
+    }
+
+    public void check_winner(int row, int column, String letter) {//4 oldugu zaman bu  fonksiyon gidiyor
+        if (check_column(column, letter) || check_row(row, letter)
+                || check_downward_diagonal() || check_upward_diagonal()) {
+            control = true; // oyun bitigini 
+        }
+    }
+
+    public boolean check_column(int column, String letter) {
+        int cnt = 0;
+
+        for (int i = 0; i < 6; i++) {//her satir gezme 
+            if (board[i][column].equals(letter)) {//4 tane yanin yana olup olmadigini konturl ediyor
+                cnt++;
+                if (cnt == 4) {//eger  4 tane yanan cikiyor  
+                    break;
+                } else {
+                    return false;
+                }
+            }
+        }
+        if (cnt == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean check_row(int row, String letter) { // ayina kolumdaki matigi
+
+        int count = 0;
+
+        for (int i = 0; i < 6; i++) {
+            if (board[row][i].equals(letter)) {
+                count++;
+                if (count == 4) {
+                    break;
+                }
+            } else {
+                count = 0;
+            }
+        }
+
+        if (count == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean check_downward_diagonal() {
+
+        boolean check = false;
+
+        for (int row = 0; row < board.length - 3; row++) {
+            for (int column = 0; column < board[row].length - 3; column++) {
+                if (board[row][column] != " "
+                        && board[row][column] == board[row + 1][column + 1]
+                        && board[row][column] == board[row + 2][column + 2]
+                        && board[row][column] == board[row + 3][column + 3]) {
+                    check = true;
+                }
+            }
+        }
+        return check;
+    }
+
+    public boolean check_upward_diagonal() {
+
+        boolean check = false;
+
+        for (int row = 0; row < board.length - 3; row++) {
+            for (int column = 3; column < board[row].length; column++) {
+                if (board[row][column] != " "
+                        && board[row][column] == board[row + 1][column - 1]
+                        && board[row][column] == board[row + 2][column - 2]
+                        && board[row][column] == board[row + 3][column - 3]) {
+                    check = true;
+                }
+            }
+        }
+        return check;
+    }
 
     /**
      * @param args the command line arguments
