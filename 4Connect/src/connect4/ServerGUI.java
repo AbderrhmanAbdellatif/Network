@@ -20,11 +20,11 @@ public class ServerGUI extends javax.swing.JFrame {
      * Creates new form ServerGUI
      */
     Server server;
-    public static DefaultListModel defaultListModel = new DefaultListModel();
+    //public static DefaultListModel defaultListModel = new DefaultListModel();
     
     public ServerGUI() {
         initComponents();
-        this.clinetlistis.setModel(defaultListModel);
+       // this.clinetlistis.setModel(defaultListModel);
     }
 
     /**
@@ -42,9 +42,7 @@ public class ServerGUI extends javax.swing.JFrame {
         SetServerbtn = new javax.swing.JButton();
         StartServerBtn = new javax.swing.JButton();
         stopServerBtn = new javax.swing.JButton();
-        SendBroadcastBtn = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        clinetlistis = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,61 +71,49 @@ public class ServerGUI extends javax.swing.JFrame {
             }
         });
 
-        SendBroadcastBtn.setText("Send Broadcast");
-        SendBroadcastBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SendBroadcastBtnActionPerformed(evt);
-            }
-        });
-
-        jScrollPane3.setViewportView(clinetlistis);
+        jLabel1.setText("port");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Port, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SetServerbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(StartServerBtn)
-                                    .addComponent(stopServerBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(SendBroadcastBtn)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(Port, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(SetServerbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(StartServerBtn)
+                            .addComponent(stopServerBtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane3)))
-                .addContainerGap())
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Port, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(SetServerbtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(StartServerBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stopServerBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SendBroadcastBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addComponent(stopServerBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,17 +136,6 @@ public class ServerGUI extends javax.swing.JFrame {
             this.server.StopServer();
         
     }//GEN-LAST:event_stopServerBtnActionPerformed
-
-    private void SendBroadcastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendBroadcastBtnActionPerformed
-        try {
-            // TODO add your handling code here:
-
-            this.server.SendBrodacastMessade(GonderilenMaj.getText());
-            
-        } catch (IOException ex) {
-            Logger.getLogger(ServerGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_SendBroadcastBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,12 +176,10 @@ public class ServerGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea GonderilenMaj;
     private javax.swing.JTextField Port;
-    private javax.swing.JButton SendBroadcastBtn;
     private javax.swing.JButton SetServerbtn;
     private javax.swing.JButton StartServerBtn;
-    public static javax.swing.JList<String> clinetlistis;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton stopServerBtn;
     // End of variables declaration//GEN-END:variables
 }
