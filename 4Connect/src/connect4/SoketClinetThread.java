@@ -37,9 +37,9 @@ public class SoketClinetThread {
             while (this.clinetThread.socket.isConnected()) {
                 try {
                     //clinet geldiyse
-                    Object mesaj = this.clinetThread.inputStream.readObject();
-                    System.out.println(" Hi " + mesaj.toString());
-                   //   ServerGUI.defaultListModel.addElement(this.clinetThread.inputStream.readObject().toString());
+                    //Object mesaj = this.clinetThread.inputStream.readObject();
+                    //System.out.println(" Hi " + mesaj.toString());
+                    ServerGUI.defaultListModel.addElement(this.clinetThread.inputStream.readObject().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(SoketClinetThread.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {

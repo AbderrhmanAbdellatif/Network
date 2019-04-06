@@ -30,7 +30,7 @@ public class intro extends javax.swing.JFrame {
 
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        PlayBtu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -54,12 +54,17 @@ public class intro extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(100, 110, 308, 42);
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 51));
-        jButton1.setFont(new java.awt.Font("Traditional Arabic", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 255));
-        jButton1.setText("Play ");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(330, 290, 120, 30);
+        PlayBtu.setBackground(new java.awt.Color(0, 255, 51));
+        PlayBtu.setFont(new java.awt.Font("Traditional Arabic", 1, 12)); // NOI18N
+        PlayBtu.setForeground(new java.awt.Color(51, 51, 255));
+        PlayBtu.setText("Play ");
+        PlayBtu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlayBtuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PlayBtu);
+        PlayBtu.setBounds(330, 290, 120, 30);
 
         jLabel2.setFont(new java.awt.Font("Traditional Arabic", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 255, 255));
@@ -84,6 +89,10 @@ public class intro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PlayBtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayBtuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PlayBtuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,7 +130,7 @@ public class intro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton PlayBtu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
