@@ -11,7 +11,7 @@ package connect4;
  */
 public class connect4WithoutGUI {
 
-    String[][] Bord = {
+    String[][] board = {
         {" ", " ", " ", " ", " ", " "},
         {" ", " ", " ", " ", " ", " "},
         {" ", " ", " ", " ", " ", " "},
@@ -27,12 +27,12 @@ public class connect4WithoutGUI {
         System.out.println("-------------------------");
         System.out.println("|    Connect 4  Game    |");
         System.out.println("-------------------------");
-        for (int i = 0; i < Bord.length; i++) {//satirlar icin 
-            for (int j = 0; j < Bord.length; j++) {//kolumlar icin
-                if (Bord[i][j] == null) {
+        for (int i = 0; i < board.length; i++) {//satirlar icin 
+            for (int j = 0; j < board.length; j++) {//kolumlar icin
+                if (board[i][j] == null) {
                     System.out.print(" | " + " ");
                 } else {
-                    System.out.print("| " + Bord[i][j] + " ");
+                    System.out.print("| " + board[i][j] + " ");
                 }
             }
             System.out.print("|");
@@ -43,8 +43,102 @@ public class connect4WithoutGUI {
         System.out.println("-------------------------");
     }
 
+    public void place_item(int column, String letter) {//hangi kolum  ve o zamandaki  oyuncu harfi  girecek    
+        for (int i = board.length - 1; i >= 0; i--) {
+            if (board[i][column] == " ") {// kolun bos ise 
+                board[i][column] = letter;
+                check_winner(i, column, letter);
+                break;
+            }
+        }
+    }
+
+    public void check_winner(int row, int column, String letter) {//4 oldugu zaman bu  fonksiyon gidiyor
+        if (check_column(column, letter) || check_row(row, letter)
+                || check_downward_diagonal() || check_upward_diagonal()) {
+           control = true; // oyun bitigini 
+        }
+    }
+
+    public boolean check_column(int column, String letter) {
+        int cnt = 0;
+
+        for (int i = 0; i < 6; i++) {//her satir gezme 
+            if (board[i][column].equals(letter)) {//4 tane yanin yana olup olmadigini konturl ediyor
+                cnt++;
+                if (cnt == 4) {//eger  4 tane yanan cikiyor  
+                    break;
+                } else {
+                    return false;
+                }
+            }
+        }
+        if (cnt == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean check_row(int row, String letter) { // ayina kolumdaki matigi
+
+        int count = 0;
+
+        for (int i = 0; i < 6; i++) {
+            if (board[row][i].equals(letter)) {
+                count++;
+                if (count == 4) {
+                    break;
+                }
+            } else {
+                count = 0;
+            }
+        }
+
+        if (count == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean check_downward_diagonal() {
+
+        boolean check = false;
+
+        for (int row = 0; row < board.length - 3; row++) {
+            for (int column = 0; column < board[row].length - 3; column++) {
+                if (board[row][column] != " "
+                        && board[row][column] == board[row + 1][column + 1]
+                        && board[row][column] == board[row + 2][column + 2]
+                        && board[row][column] == board[row + 3][column + 3]) {
+                    check = true;
+                }
+            }
+        }
+        return check;
+    }
+
+    public boolean check_upward_diagonal() {
+
+        boolean check = false;
+
+        for (int row = 0; row < board.length - 3; row++) {
+            for (int column = 3; column < board[row].length; column++) {
+                if (board[row][column] != " "
+                        && board[row][column] == board[row + 1][column - 1]
+                        && board[row][column] == board[row + 2][column - 2]
+                        && board[row][column] == board[row + 3][column - 3]) {
+                    check = true;
+                }
+            }
+        }
+        return check;
+    }
+
     public static void main(String[] args) {
         connect4WithoutGUI connect4Game = new connect4WithoutGUI();
         connect4Game.show_board();
     }
+
 }
