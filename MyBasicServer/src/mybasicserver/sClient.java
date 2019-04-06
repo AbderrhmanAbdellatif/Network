@@ -28,6 +28,7 @@ public class sClient {
 
         }
         // client dinleme fonksiyonum
+        @Override
         public void run() {
             try {
                 while (this.client.socket.isConnected()) {

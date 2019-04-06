@@ -30,7 +30,7 @@ public class Clinet {
         public void run() {
             while (socket.isConnected()) {
                 try {
-                    ClinetGUI.dlm.addElement(" Hi i am clinet " + this.clinet.objectInputStream.readObject());
+                    ClinetGUI.dlm.addElement(clinet.objectInputStream.readObject());
                 } catch (IOException ex) {
                     Logger.getLogger(Clinet.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -51,13 +51,18 @@ public class Clinet {
         this.port = port;
     }
     
-    public void StartClinet() throws IOException {
+    public void StartClinet()  {
       
-            this.socket = new Socket(this.ip, this.port);//clinet ip ve port icin
-            this.objectInputStream = new ObjectInputStream(this.socket.getInputStream());// gelen mesaj 
-            this.objectOutputStream = new ObjectOutputStream(this.socket.getOutputStream());// gonderlien mesaj icin
-            ListenClientThread listenClientThread = new ListenClientThread(this);
+        try {
+            socket = new Socket(this.ip, this.port);//clinet ip ve port icin
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());// gonderlien mesaj icin
+            objectInputStream = new ObjectInputStream(socket.getInputStream());// gelen mesaj 
+             ListenClientThread listenClientThread = new ListenClientThread(this);
             listenClientThread.start();
+        
+        } catch (IOException ex) {
+            Logger.getLogger(Clinet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -66,7 +71,7 @@ public class Clinet {
     }
     
     public void MesajGonder(String string) throws IOException {
-        this.objectOutputStream.writeObject(string);
+        objectOutputStream.writeObject(string);
     }
     
 }

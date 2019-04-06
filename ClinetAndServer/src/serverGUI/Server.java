@@ -43,18 +43,27 @@ public class Server {
     public ArrayList<SoketClinetThread> soketClinetThreads;// gelen clinet listisi
     public ListenServerThread listenServerThread;
     
-    public Server(int port) throws IOException {
-        serverSocket = new ServerSocket(port);//serve icin  port burada koyuyoruz
-        soketClinetThreads = new ArrayList<SoketClinetThread>();//serverde ekleyecegimiz clinetler
+    public Server(int port) {
+        try {
+            serverSocket = new ServerSocket(port);//serve icin  port burada koyuyoruz
+            soketClinetThreads = new ArrayList<SoketClinetThread>();//serverde ekleyecegimiz clinetler
+        } catch (IOException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void StopServer() throws IOException {
-        this.serverSocket.close();//server kaptmak icin
+    public void StopServer()  {
+        try {
+            this.serverSocket.close();//server kaptmak icin
+        } catch (IOException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public void Startserver() {
-        ListenServerThread listenServerThread = new ListenServerThread(this);
-        listenServerThread.start();
+    public void Startserver()  {
+        this.listenServerThread = new ListenServerThread(this);
+        this.listenServerThread.start();
+           
     }
     
     public void SendMessade(Object mesaj, SoketClinetThread clinetThread) {

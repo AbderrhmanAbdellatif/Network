@@ -17,9 +17,9 @@ import java.util.logging.Logger;
  * @author Toshiba
  */
 public class SoketClinetThread {
-    
+
     public class ListenClinetThread extends Thread {
-        
+
         private SoketClinetThread clinetThread; //her clinet geldiginde 
 
         public ListenClinetThread(SoketClinetThread clinetThread) {//object yapici 
@@ -32,13 +32,14 @@ public class SoketClinetThread {
         The run() method is what is executed by the thread after you call start(). 
         Here is an example of creating a Java Thread subclass:
          */
+        @Override
         public void run() {
             while (this.clinetThread.socket.isConnected()) {
                 try {
                     //clinet geldiyse
-                    Object mesaj = this.clinetThread.inputStream.readObject();
+                    //Object mesaj = this.clinetThread.inputStream.readObject();
                     //System.out.println(" Hi " + mesaj.toString());
-                    ServerGUI.defaultListModel.addElement("hi " + mesaj.toString());
+                    ServerGUI.defaultListModel.addElement(this.clinetThread.inputStream.readObject().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(SoketClinetThread.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -57,13 +58,14 @@ public class SoketClinetThread {
     public SoketClinetThread(Socket socket) throws IOException {
         SoketClinetThread.clinetNo++;//clinetlerini sayisi icin
         this.no = SoketClinetThread.clinetNo;//simdiki clinet Numarasi icin
+        this.socket = socket;// clinetini soketi 
         this.inputStream = new ObjectInputStream(socket.getInputStream());// gelen mesaj icin
         this.outputStream = new ObjectOutputStream(socket.getOutputStream());//gondeilen mesaj icin
         this.listenClinetThread = new ListenClinetThread(this);// gelen client  buraya bagladik
         this.listenClinetThread.start();//To start the Java thread you will call its start() method
 
     }
-    
+
     public void sendmesaj(String mesaj) throws IOException {
         this.outputStream.writeObject(mesaj);// gelen mesaj gondermek  icin
     }

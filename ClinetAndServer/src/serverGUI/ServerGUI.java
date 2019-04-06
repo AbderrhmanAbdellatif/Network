@@ -134,12 +134,10 @@ public class ServerGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SetServerbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SetServerbtnActionPerformed
-        try {
+   
             // TODO add your handling code here:
             server = new Server(Integer.parseInt(Port.getText()));
-        } catch (IOException ex) {
-            Logger.getLogger(ServerGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }//GEN-LAST:event_SetServerbtnActionPerformed
 
     private void StartServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartServerBtnActionPerformed
@@ -148,12 +146,9 @@ public class ServerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_StartServerBtnActionPerformed
 
     private void stopServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopServerBtnActionPerformed
-        try {
             // TODO add your handling code here:7
             this.server.StopServer();
-        } catch (IOException ex) {
-            Logger.getLogger(ServerGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_stopServerBtnActionPerformed
 
     private void SendBroadcastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendBroadcastBtnActionPerformed
