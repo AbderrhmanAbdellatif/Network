@@ -5,7 +5,7 @@
  */
 package connect4;
 
-import static connect4.Game.showArea;
+
 import java.util.Scanner;
 
 /**
@@ -27,45 +27,45 @@ public class connect4WithoutGUI {
 
     public void show_board() {
         
-           String Temp = "";
-        Temp += ("\n");
-        Temp += "\n " + "-----------------------------" + " \n";
-        Temp += " \n" + "|    Connect 4  Game    |" + "\n";
-        Temp += "\n" + "------------------------------" + "\n";
-        for (int i = 0; i < board.length; i++) {//satirlar icin 
-            for (int j = 0; j < board.length; j++) {//kolumlar icin
-                if (board[i][j] == null) {
-                    Temp += "  \t|   " + " ";
-                } else {
-                    Temp += (" | " + board[i][j] + " ");
-                }
-            }
-            Temp += ("|");
-            Temp += ("\n");
-        }
-        Temp += ("\n----------------------------- \n ");
-        Temp += ("\n | 1   2   3   4   5   6 | \n ");
-        Temp += ("\n ----------------------------- \n");
-
-        showArea.setText(Temp);
-//        System.out.println("");
-//        System.out.println("-------------------------");
-//        System.out.println("|    Connect 4  Game    |");
-//        System.out.println("-------------------------");
+//           String Temp = "";
+//        Temp += ("\n");
+//        Temp += "\n " + "-----------------------------" + " \n";
+//        Temp += " \n" + "|    Connect 4  Game    |" + "\n";
+//        Temp += "\n" + "------------------------------" + "\n";
 //        for (int i = 0; i < board.length; i++) {//satirlar icin 
 //            for (int j = 0; j < board.length; j++) {//kolumlar icin
 //                if (board[i][j] == null) {
-//                    System.out.print(" | " + " ");
+//                    Temp += "  \t|   " + " ";
 //                } else {
-//                    System.out.print("| " + board[i][j] + " ");
+//                    Temp += (" | " + board[i][j] + " ");
 //                }
 //            }
-//            System.out.print("|");
-//            System.out.println();
+//            Temp += ("|");
+//            Temp += ("\n");
 //        }
-//        System.out.println("-------------------------");
-//        System.out.println("| 1   2   3   4   5   6 |");
-//        System.out.println("-------------------------");
+//        Temp += ("\n----------------------------- \n ");
+//        Temp += ("\n | 1   2   3   4   5   6 | \n ");
+//        Temp += ("\n ----------------------------- \n");
+
+      //  showArea.setText(Temp);
+        System.out.println("");
+        System.out.println("-------------------------");
+        System.out.println("|    Connect 4  Game    |");
+        System.out.println("-------------------------");
+        for (int i = 0; i < board.length; i++) {//satirlar icin 
+            for (int j = 0; j < board.length; j++) {//kolumlar icin
+                if (board[i][j] == null) {
+                    System.out.print(" | " + " ");
+                } else {
+                    System.out.print("| " + board[i][j] + " ");
+                }
+            }
+            System.out.print("|");
+            System.out.println();
+        }
+        System.out.println("-------------------------");
+        System.out.println("| 1   2   3   4   5   6 |");
+        System.out.println("-------------------------");
     }
 
     public void place_item(int column, String letter) {//hangi kolum  ve o zamandaki  oyuncu harfi  girecek    

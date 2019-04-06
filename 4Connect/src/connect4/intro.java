@@ -5,6 +5,12 @@
  */
 package connect4;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Toshiba
@@ -14,6 +20,12 @@ public class intro extends javax.swing.JFrame {
     /**
      * Creates new form intro
      */
+    static Clinet Playerone; // Player one clinet
+    static Clinet PlayerTow; // Player Tow Clinet
+    static Server GamesServer;//servee of game
+    final String ip = "127.0.0.1";//ip
+    final int port = 1234;//port
+
     public intro() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -32,9 +44,9 @@ public class intro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         PlayBtu = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Payer1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        Player2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/connect4/intro.jpg"))); // NOI18N
@@ -71,16 +83,16 @@ public class intro extends javax.swing.JFrame {
         jLabel2.setText("Player1");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(80, 200, 70, 29);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(160, 200, 171, 29);
+        getContentPane().add(Payer1);
+        Payer1.setBounds(160, 200, 171, 29);
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 255, 255));
         jLabel3.setText("Player2");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(80, 250, 50, 22);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(160, 250, 171, 29);
+        getContentPane().add(Player2);
+        Player2.setBounds(160, 250, 171, 29);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/connect4/intro.jpg"))); // NOI18N
@@ -91,7 +103,25 @@ public class intro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PlayBtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayBtuActionPerformed
-        // TODO add your handling code here:
+        if (!Payer1.getText().isEmpty() && !Player2.getText().isEmpty()) {
+            try {
+                // TODO add your handling code here:
+                  GamesServer = new Server(port);
+                  GamesServer.Startserver();
+                Playerone = new Clinet(ip, port);
+                PlayerTow = new Clinet(ip, port);
+                Playerone.StartClinet();
+                PlayerTow.StartClinet();
+                Playerone.MesajGonder("Hi i player one and my name is : " + Payer1.getText());
+                PlayerTow.MesajGonder("Hi i player Tow and my name is : :" + Player2.getText());
+            } catch (IOException ex) {
+                Logger.getLogger(intro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this," you  to fill  all the text file ");
+        }
+
+
     }//GEN-LAST:event_PlayBtuActionPerformed
 
     /**
@@ -130,13 +160,13 @@ public class intro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Payer1;
     private javax.swing.JButton PlayBtu;
+    private javax.swing.JTextField Player2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
