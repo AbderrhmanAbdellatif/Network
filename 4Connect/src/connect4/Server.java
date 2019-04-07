@@ -17,15 +17,15 @@ import java.util.logging.Logger;
  * @author Toshiba
  */
 public class Server {
-    
+
     public class ListenServerThread extends Thread {
-        
+
         private Server server;
-        
+
         public ListenServerThread(Server server) {
             this.server = server;
         }
-        
+
         @Override
         public void run() {
             while (!this.server.serverSocket.isClosed()) {
@@ -42,7 +42,7 @@ public class Server {
     public ServerSocket serverSocket;//server icin bir soket
     public ArrayList<SoketClinetThread> soketClinetThreads;// gelen clinet listisi
     public ListenServerThread listenServerThread;
-    
+
     public Server(int port) {
         try {
             serverSocket = new ServerSocket(port);//serve icin  port burada koyuyoruz
@@ -51,21 +51,21 @@ public class Server {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void StopServer()  {
+
+    public void StopServer() {
         try {
             this.serverSocket.close();//server kaptmak icin
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void Startserver()  {
+
+    public void Startserver() {
         this.listenServerThread = new ListenServerThread(this);
         this.listenServerThread.start();
-           
+
     }
-    
+
     public void SendMessade(Object mesaj, SoketClinetThread clinetThread) {
         try {
             clinetThread.sendmesaj(mesaj.toString());
@@ -73,11 +73,11 @@ public class Server {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void SendBrodacastMessade(Object object) throws IOException {
         for (int i = 0; i < soketClinetThreads.size(); i++) {
             soketClinetThreads.get(i).sendmesaj(object.toString());//her clint masaj gonderme 
         }
     }
-    
+
 }

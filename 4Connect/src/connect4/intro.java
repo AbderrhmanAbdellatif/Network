@@ -23,9 +23,10 @@ public class intro extends javax.swing.JFrame {
     static Clinet Playerone; // Player one clinet
     static Clinet PlayerTow; // Player Tow Clinet
     static Server GamesServer;//servee of game
-    final String ip = "127.0.0.1";//ip
-    final int port = 1234;//port
-    
+    final static String ip = "127.0.0.1";//ip
+    final static int port = 1234;//port
+    static String nameplayerone, nameplayertow;
+
     public intro() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -104,19 +105,18 @@ public class intro extends javax.swing.JFrame {
 
     private void PlayBtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayBtuActionPerformed
         if (!Payer1.getText().isEmpty() && !Player2.getText().isEmpty()) {
-            try {
-                // TODO add your handling code here:
-                GamesServer = new Server(port);
-                GamesServer.Startserver();
-                Playerone = new Clinet(ip, port);
-                PlayerTow = new Clinet(ip, port);
-                Playerone.StartClinet();
-                PlayerTow.StartClinet();
-                Playerone.MesajGonder("Hi i player one and my name is : " + Payer1.getText());
-                PlayerTow.MesajGonder("Hi i player Tow and my name is : :" + Player2.getText());
-            } catch (IOException ex) {
-                Logger.getLogger(intro.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            // TODO add your handling code here:
+            GamesServer = new Server(port);
+            GamesServer.Startserver();
+            Playerone = new Clinet(ip, port);
+            PlayerTow = new Clinet(ip, port);
+            Playerone.StartClinet();
+            PlayerTow.StartClinet();
+            nameplayerone = Payer1.getText();
+            nameplayertow = Player2.getText();
+            this.setVisible(false);
+            new wait().setVisible(true);
+
         } else {
             JOptionPane.showMessageDialog(this, " you  to fill  all the text file ");
         }

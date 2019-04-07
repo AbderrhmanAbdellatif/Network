@@ -39,7 +39,7 @@ public class SoketClinetThread {
                     //clinet geldiyse
                     //Object mesaj = this.clinetThread.inputStream.readObject();
                     //System.out.println(" Hi " + mesaj.toString());
-                    ServerGUI.defaultListModel.addElement(this.clinetThread.inputStream.readObject().toString());
+                    ServerGUI.ListModelServer.addElement(this.clinetThread.inputStream.readObject().toString());
                 } catch (IOException ex) {
                     Logger.getLogger(SoketClinetThread.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {

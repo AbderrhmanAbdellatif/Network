@@ -70,7 +70,7 @@ public class Clinet {
         socket.close();
     }
     
-    public void MesajGonder(String string) throws IOException {
+    public void MesajGonder(int string) throws IOException {
         objectOutputStream.writeObject(string);
     }
     
