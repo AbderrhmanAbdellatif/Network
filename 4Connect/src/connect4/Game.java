@@ -487,7 +487,7 @@ public class Game extends javax.swing.JFrame {
 
             do {
                 display();
-                pos=Integer.parseInt(MyBasicServerGui.lmodel.getElementAt(0).toString());
+                pos=Integer.parseInt();
                 
                 //validate play
                 validPlay = validate(pos);
@@ -556,12 +556,9 @@ public class Game extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        try {
             // TODO add your handling code here:
             intro.GamesServer.StopServer();
-        } catch (IOException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
     }//GEN-LAST:event_ExitActionPerformed
 
     public void display() {

@@ -24,7 +24,7 @@ public class intro extends javax.swing.JFrame {
      */
     static Clinet Playerone; // Player one clinet
     static Clinet PlayerTow; // Player Tow Clinet
-    static MyBasicServer GamesServer;//servee of game
+    static Server GamesServer;//servee of game
     final static String ip = "127.0.0.1";//ip
     final static int port = 1234;//port
     static String nameplayerone, nameplayertow;
