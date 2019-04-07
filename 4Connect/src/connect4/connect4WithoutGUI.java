@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+         
 package connect4;
 
 
@@ -176,14 +177,14 @@ public class connect4WithoutGUI {
         while (true) {
 
             System.out.println();
-            System.out.print(player_1 + ", your symbol is 'O'. Enter column you want to mark : ");
+            System.out.print(player_1 + ", your symbol is 'S'. Enter column you want to mark : ");
             input1 = new Scanner(System.in);
             int column = input1.nextInt();
             while (column > 6 || column < 1) {//eger fazla colum girirse
                 System.out.print("Please enter valid column: ");
                 column = input1.nextInt();
             }
-            connect_4.place_item(column - 1, "O");
+            connect_4.place_item(column - 1, "S");
             connect_4.show_board();
             if (connect_4.control == true) {
                 System.out.println();
@@ -191,14 +192,14 @@ public class connect4WithoutGUI {
                 break;
             }
             System.out.println();
-            System.out.print(player_2 + ", your symbol is 'X'. Enter column you want to mark : ");
+            System.out.print(player_2 + ", your symbol is 'G'. Enter column you want to mark : ");
             input2 = new Scanner(System.in);
             int column2 = input2.nextInt();
             while (column2 > 6 || column2 < 1) {
                 System.out.print("Please enter valid column: ");
                 column2 = input2.nextInt();
             }
-            connect_4.place_item(column2 - 1, "X");
+            connect_4.place_item(column2 - 1, "G");
             connect_4.show_board();
 
             if (connect_4.control == true) {

@@ -5,7 +5,10 @@
  */
 package connect4;
 
+import java.util.Scanner;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +21,7 @@ public class Game extends javax.swing.JFrame {
      */
     connect4WithoutGUI gUI = new connect4WithoutGUI();
     String Arrayofimg[] = {"red.jpg", "yellow.jpg", "white.png"};
-    JLabel[][] board;
+    public JLabel[][] board;
     boolean control = false;
 
     public Game() {
@@ -33,6 +36,7 @@ public class Game extends javax.swing.JFrame {
         };
         this.setLocationRelativeTo(this);
         showicon();
+
     }
 
     /**
@@ -55,7 +59,7 @@ public class Game extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Player1 = new javax.swing.JLabel();
-        Player = new javax.swing.JLabel();
+        Player2 = new javax.swing.JLabel();
         PlayBtu = new javax.swing.JButton();
         i1 = new javax.swing.JLabel();
         i2 = new javax.swing.JLabel();
@@ -93,6 +97,9 @@ public class Game extends javax.swing.JFrame {
         i34 = new javax.swing.JLabel();
         i35 = new javax.swing.JLabel();
         i36 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Playerone = new javax.swing.JLabel();
+        PlayerTwo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,8 +123,8 @@ public class Game extends javax.swing.JFrame {
         Player1.setFont(new java.awt.Font("Simplified Arabic Fixed", 1, 14)); // NOI18N
         Player1.setText("Ahmet");
 
-        Player.setFont(new java.awt.Font("Traditional Arabic", 1, 14)); // NOI18N
-        Player.setText("maya");
+        Player2.setFont(new java.awt.Font("Traditional Arabic", 1, 14)); // NOI18N
+        Player2.setText("maya");
 
         PlayBtu.setText("Play");
         PlayBtu.addActionListener(new java.awt.event.ActionListener() {
@@ -199,6 +206,8 @@ public class Game extends javax.swing.JFrame {
 
         i36.setText("jLabel9");
 
+        jLabel7.setText("infor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -261,7 +270,7 @@ public class Game extends javax.swing.JFrame {
                                     .addComponent(i34)
                                     .addComponent(i32)
                                     .addComponent(i33))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 505, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -276,7 +285,16 @@ public class Game extends javax.swing.JFrame {
                                         .addComponent(i12)
                                         .addGap(36, 36, 36)
                                         .addComponent(i18)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(278, 278, 278)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(player1txt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Player2txt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(141, 141, 141))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,36 +305,34 @@ public class Game extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(661, 661, 661)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Player, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(644, 644, 644)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(663, 663, 663)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(688, 688, 688)
+                                .addComponent(PlayBtu, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(PlayBtu, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(612, 612, 612)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(661, 661, 661)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(6, 6, 6))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addContainerGap()
+                                            .addComponent(jLabel6)
+                                            .addGap(18, 18, 18)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(player1txt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Player2txt, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(Player2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PlayerTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Playerone, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +353,7 @@ public class Game extends javax.swing.JFrame {
                         .addComponent(Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Player, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Player2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,17 +400,7 @@ public class Game extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(3, 3, 3)
                                         .addComponent(i17))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(player1txt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Player2txt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(PlayBtu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
@@ -404,53 +410,68 @@ public class Game extends javax.swing.JFrame {
                                 .addComponent(i12))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(i18))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(PlayBtu, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(i18))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(i19)
+                                        .addComponent(i25))
+                                    .addGap(6, 6, 6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(i20)
+                                        .addComponent(i26))
+                                    .addGap(6, 6, 6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(i21)
+                                        .addComponent(i27))
+                                    .addGap(13, 13, 13)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(i22)
+                                        .addComponent(i28))
+                                    .addGap(9, 9, 9)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(i23)
+                                            .addGap(11, 11, 11)
+                                            .addComponent(i24))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(i29)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(i30)
+                                            .addGap(5, 5, 5))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(i35)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(i36)
+                                    .addGap(6, 6, 6)
+                                    .addComponent(i31)
+                                    .addGap(13, 13, 13)
+                                    .addComponent(i32)
+                                    .addGap(9, 9, 9)
+                                    .addComponent(i33)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(i34)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(i19)
-                                    .addComponent(i25))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(i20)
-                                    .addComponent(i26))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(i21)
-                                    .addComponent(i27))
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(i22)
-                                    .addComponent(i28))
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(i23)
-                                        .addGap(11, 11, 11)
-                                        .addComponent(i24))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(i29)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(i30)
-                                        .addGap(5, 5, 5))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(i35)
-                                .addGap(6, 6, 6)
-                                .addComponent(i36)
-                                .addGap(6, 6, 6)
-                                .addComponent(i31)
-                                .addGap(13, 13, 13)
-                                .addComponent(i32)
-                                .addGap(9, 9, 9)
-                                .addComponent(i33)
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(i34)))))
-                .addContainerGap(200, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(player1txt, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Player2txt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(33, 33, 33)
+                .addComponent(jLabel7)
+                .addGap(35, 35, 35)
+                .addComponent(Playerone, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(PlayerTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -458,40 +479,98 @@ public class Game extends javax.swing.JFrame {
 
     private void PlayBtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayBtuActionPerformed
         // TODO add your handling code here:
+        showicon();
+        boolean control = true;
+        ImageIcon red = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[0]));
+        ImageIcon yellow = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1]));
 
-        if ("A".equals(player1txt.getText())) {
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board.length; j++) {
+        JOptionPane.showMessageDialog(this, "Welcome to Connect 4. Hope you enjoy the game.");
+        show_board();
+        JOptionPane.showMessageDialog(this, "player 1 name :  " + Player1.getText());
+        JOptionPane.showMessageDialog(this, "player 2 name :  " + Player2.getText());
+        showicon();
+        if (player1txt.getText().isEmpty() || Player2txt.getText().isEmpty()) {
+            control = false;
+            JOptionPane.showMessageDialog(this,"enter the of colum");
+        } else {
+            while (true) {
 
-                    board[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])));
-
+                Playerone.setText("player_1  your color is red . Enter column you want to mark : ");
+                int column = Integer.parseInt(player1txt.getText());
+                while (column > 6 || column < 1) {//eger fazla colum girirse
+                    JOptionPane.showMessageDialog(this, "Please enter valid column: ");
+                    player1txt.setText(null);
+                    column = Integer.parseInt(player1txt.getText());
                 }
+                place_item(column - 1, red);
+                show_board();
+                if (control == true) {
+                    JOptionPane.showMessageDialog(this, "player one has won the game !!!! ");
+                    break;
+                }
+                JOptionPane.showMessageDialog(this, "player_2  your color  is yellow. Enter column you want to mark : ");
+                int column2 = Integer.parseInt(Player2txt.getText());
+                while (column2 > 6 || column2 < 1) {
+                    JOptionPane.showMessageDialog(this, "Please enter valid column: ");
+                    column2 = Integer.parseInt(Player2txt.getText());
+                }
+                place_item(column2 - 1, yellow);
+                show_board();
+
+                if (control == true) {
+                    if (control == true) {
+                        JOptionPane.showMessageDialog(this, "player two  has won the game !!!! ");
+                        break;
+                    }
+                }
+
             }
         }
 
+//        if ("A".equals(player1txt.getText())) {
+//            for (int i = 0; i < board.length; i++) {
+//                for (int j = 0; j < board.length; j++) {
+//
+//                    board[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])));
+//
+//                }
+//            }
+//        }
+
     }//GEN-LAST:event_PlayBtuActionPerformed
-    public void place_item(int column, String letter) {//hangi kolum  ve o zamandaki  oyuncu harfi  girecek    
+    public void place_item(int column, ImageIcon imageIcon) {//hangi kolum  ve o zamandaki  oyuncu harfi  girecek    
+//        ImageIcon imageIcon = null;
+//        if (letter.equals("O")) {
+//            imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])); //sari renki 
+//        } else {
+//            imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[0])); //kirimizi renki 
+//        }
         for (int i = board.length - 1; i >= 0; i--) {
-            if (board[i][column] == " ") {// kolun bos ise 
-                board[i][column] = letter;
-                check_winner(i, column, letter);
+            if (board[i][column].getIcon().equals(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[2])))) {// kolun bos ise 
+                board[i][column].setIcon(imageIcon);
+                check_winner(i, column, imageIcon);
                 break;
             }
         }
     }
 
-    public void check_winner(int row, int column, String letter) {//4 oldugu zaman bu  fonksiyon gidiyor
-        if (check_column(column, letter) || check_row(row, letter)
+    public void check_winner(int row, int column, ImageIcon imageIcon) {//4 oldugu zaman bu  fonksiyon gidiyor
+        if (check_column(column, imageIcon) || check_row(row, imageIcon)
                 || check_downward_diagonal() || check_upward_diagonal()) {
             control = true; // oyun bitigini 
         }
     }
 
-    public boolean check_column(int column, String letter) {
+    public boolean check_column(int column, ImageIcon imageIcon) {
         int cnt = 0;
-
+//        ImageIcon imageIcon = null;
+//        if (letter.equals("O")) {
+//            imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])); //sari renki 
+//        } else {
+//            imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[0])); //kirimizi renki 
+//        }
         for (int i = 0; i < 6; i++) {//her satir gezme 
-            if (board[i][column].equals(letter)) {//4 tane yanin yana olup olmadigini konturl ediyor
+            if (board[i][column].getIcon().equals(imageIcon)) {//4 tane yanin yana olup olmadigini konturl ediyor
                 cnt++;
                 if (cnt == 4) {//eger  4 tane yanan cikiyor  
                     break;
@@ -507,12 +586,17 @@ public class Game extends javax.swing.JFrame {
         }
     }
 
-    public boolean check_row(int row, String letter) { // ayina kolumdaki matigi
-
+    public boolean check_row(int row, ImageIcon imageIcon) { // ayina kolumdaki matigi
+//        ImageIcon imageIcon = null;
+//        if (letter.equals("O")) {
+//            imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])); //sari renki 
+//        } else {
+//            imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[0])); //kirimizi renki 
+//        }
         int count = 0;
 
         for (int i = 0; i < 6; i++) {
-            if (board[row][i].equals(letter)) {
+            if (board[row][i].equals(imageIcon)) {
                 count++;
                 if (count == 4) {
                     break;
@@ -535,7 +619,7 @@ public class Game extends javax.swing.JFrame {
 
         for (int row = 0; row < board.length - 3; row++) {
             for (int column = 0; column < board[row].length - 3; column++) {
-                if (board[row][column] != " "
+                if (!board[row][column].getIcon().equals(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[2])))
                         && board[row][column] == board[row + 1][column + 1]
                         && board[row][column] == board[row + 2][column + 2]
                         && board[row][column] == board[row + 3][column + 3]) {
@@ -552,7 +636,7 @@ public class Game extends javax.swing.JFrame {
 
         for (int row = 0; row < board.length - 3; row++) {
             for (int column = 3; column < board[row].length; column++) {
-                if (board[row][column] != " "
+                if (!board[row][column].getIcon().equals(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[2])))
                         && board[row][column] == board[row + 1][column - 1]
                         && board[row][column] == board[row + 2][column - 2]
                         && board[row][column] == board[row + 3][column - 3]) {
@@ -566,26 +650,23 @@ public class Game extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    void showGame() {
-        String Temp = "";
-        Temp += ("\n");
-        Temp += "\n " + "-----------------------------" + " \n";
-        Temp += " \n" + "|    Connect 4  Game    |" + "\n";
-        Temp += "\n" + "------------------------------" + "\n";
-        for (int i = 0; i < gUI.board.length; i++) {//satirlar icin 
-            for (int j = 0; j < gUI.board.length; j++) {//kolumlar icin
-                if (gUI.board[i][j] == null) {
-                    Temp += "  \t|   " + " ";
+    void show_board() {
+        ImageIcon imageIcon = null;
+        for (int i = 0; i < board.length; i++) {//satirlar icin 
+            for (int j = 0; j < board.length; j++) {//kolumlar icin
+                if (board[i][j].getIcon().equals(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[2])))) {
+                    board[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[2])));
+                    getContentPane().add(board[i][j]);
                 } else {
-                    Temp += (" | " + gUI.board[i][j] + " ");
+                    if (board[i][j].getIcon().equals(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[0])))) {
+                        imageIcon = new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[0]));
+                    } else if (board[i][j].getIcon().equals(new javax.swing.ImageIcon(getClass().getResource(Arrayofimg[1])))) {
+                    }
+                    board[i][j].setIcon(imageIcon);
+                    getContentPane().add(board[i][j]);
                 }
             }
-            Temp += ("|");
-            Temp += ("\n");
         }
-        Temp += ("\n----------------------------- \n ");
-        Temp += ("\n | 1   2   3   4   5   6 | \n ");
-        Temp += ("\n ----------------------------- \n");
 
         //showArea.setText(Temp);
     }
@@ -826,9 +907,11 @@ public class Game extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton PlayBtu;
-    private javax.swing.JLabel Player;
     private javax.swing.JLabel Player1;
+    private javax.swing.JLabel Player2;
     private javax.swing.JTextField Player2txt;
+    private javax.swing.JLabel PlayerTwo;
+    private javax.swing.JLabel Playerone;
     private javax.swing.JLabel i1;
     private javax.swing.JLabel i10;
     private javax.swing.JLabel i11;
@@ -873,6 +956,7 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField player1txt;
     // End of variables declaration//GEN-END:variables
 }
