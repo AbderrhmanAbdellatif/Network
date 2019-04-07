@@ -33,30 +33,36 @@ public class Game extends javax.swing.JFrame {
     public JButton[][] grid = new JButton[6][7];
     boolean control = false;
     static int play;
+    static Color player = Color.RED;
     static int size = 0;
 
     public Game() {
         initComponents();
-        grid = new JButton[][]{
-            {i1, i7, i13, i19, i25, i31, i37},
-            {i2, i8, i14, i20, i26, i32, i38},
-            {i3, i9, i15, i21, i27, i33, i39},
-            {i4, i10, i16, i22, i28, i34, i40},
-            {i5, i11, i17, i23, i29, i35, i41},
-            {i6, i12, i18, i24, i30, i36, i42},};
+        if (Player1.getText().equals("") || Player2.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, " no clinet we have ");
+        } else {
 
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                grid[i][j].setBackground(Color.white);
+            grid = new JButton[][]{
+                {i1, i7, i13, i19, i25, i31, i37},
+                {i2, i8, i14, i20, i26, i32, i38},
+                {i3, i9, i15, i21, i27, i33, i39},
+                {i4, i10, i16, i22, i28, i34, i40},
+                {i5, i11, i17, i23, i29, i35, i41},
+                {i6, i12, i18, i24, i30, i36, i42},};
+
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[0].length; j++) {
+                    grid[i][j].setBackground(Color.white);
+                }
             }
-        }
-        Player1.setText(intro.nameplayerone);
-        Player2.setText(intro.nameplayertow);
-        this.setLocationRelativeTo(this);
-        //  showicon();
+            Player1.setText(intro.nameplayerone);
+            Player2.setText(intro.nameplayertow);
+            this.setLocationRelativeTo(this);
+            //  showicon();
 
-        JOptionPane.showMessageDialog(this,
-                "Welcome to Connect 4. Hope you enjoy the game.");
+            JOptionPane.showMessageDialog(this,
+                    "Welcome to Connect 4. Hope you enjoy the game.");
+        }
 
     }
 
@@ -71,7 +77,7 @@ public class Game extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        RestTheGame = new javax.swing.JLabel();
         Exit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -133,8 +139,8 @@ public class Game extends javax.swing.JFrame {
 
         jLabel2.setText("player Chooser :");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/connect4/tolgacon.png"))); // NOI18N
+        RestTheGame.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        RestTheGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/connect4/tolgacon.png"))); // NOI18N
 
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +150,11 @@ public class Game extends javax.swing.JFrame {
         });
 
         jButton2.setText("Reset Game");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Player 1:");
 
@@ -219,7 +230,7 @@ public class Game extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(520, 520, 520)
                                 .addComponent(jButton2))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(RestTheGame, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39)
                         .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -338,7 +349,7 @@ public class Game extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RestTheGame, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Exit))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,19 +488,20 @@ public class Game extends javax.swing.JFrame {
     private void PlayBtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayBtuActionPerformed
         // TODO add your handling code here:
         int turn = 1;
-        Color player = Color.RED;
+
         boolean winner = false;
-        int pos=0;
+        int pos = 0;
         //play a turn
-        while (winner == false && turn <= 42) {
+        if (winner == false && turn <= 42) {
 
             boolean validPlay;
 
             do {
                 display();
-                pos=Integer.parseInt();
-                
+                pos = play;
                 //validate play
+                JOptionPane.showMessageDialog(this, " select you colum ");
+
                 validPlay = validate(pos);
 
             } while (validPlay == false);
@@ -532,34 +544,51 @@ public class Game extends javax.swing.JFrame {
 
     private void i12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i12ActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                grid[i][j].setBackground(Color.white);
+            }
+        }
     }//GEN-LAST:event_i12ActionPerformed
 
     private void SelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectActionPerformed
         // TODO add your handling code here:
-        size++;
-        play = Integer.parseInt(ComboBoxcolum.getSelectedItem().toString()) - 1;
-        if (size % 2 == 1) {
-            try {
-                intro.Playerone.MesajGonder(play);// birinci oyuncu mmesaj server gonderiyor
-            } catch (IOException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                intro.Playerone.MesajGonder(play);// ikinci  oyuncu mmesaj server gonderiyor
-            } catch (IOException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            size++;
+            play = Integer.parseInt(ComboBoxcolum.getSelectedItem().toString()) - 1;
+            if (size % 2 == 1) {
+                try {
+                    intro.Playerone.MesajGonder(play);// birinci oyuncu mmesaj server gonderiyor
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "server is disconnect");
+                }
+            } else {
+                try {
+                    intro.Playerone.MesajGonder(play);// ikinci  oyuncu mmesaj server gonderiyor
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "server is disconnect");
+                }
 
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, ex);
         }
 
     }//GEN-LAST:event_SelectActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-            // TODO add your handling code here:
-            intro.GamesServer.StopServer();
-      
+        // TODO add your handling code here:
+        
+
+        intro.GamesServer.StopServer();
+        this.setVisible(false);
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void display() {
         // System.out.println(" 0 1 2 3 4 5 6");
@@ -646,14 +675,22 @@ public class Game extends javax.swing.JFrame {
             java.awt.EventQueue.invokeLater(() -> {
                 new Game().setVisible(true);
             });
+
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Game.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Game.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Game.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Game.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -665,6 +702,7 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JLabel Player2;
     private javax.swing.JLabel PlayerTwo;
     private javax.swing.JLabel Playerone;
+    private javax.swing.JLabel RestTheGame;
     private javax.swing.JButton Select;
     private javax.swing.JButton i1;
     private javax.swing.JButton i10;
@@ -711,7 +749,6 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
