@@ -16,7 +16,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
  * @author Toshiba
- */
+ */ 
 public class intro extends javax.swing.JFrame {
 
     /**
@@ -24,7 +24,7 @@ public class intro extends javax.swing.JFrame {
      */
     static Clinet Playerone; // Player one clinet
     static Clinet PlayerTow; // Player Tow Clinet
-    static Server GamesServer;//servee of game
+    static MyBasicServer GamesServer;//servee of game
     final static String ip = "127.0.0.1";//ip
     final static int port = 1234;//port
     static String nameplayerone, nameplayertow;
@@ -108,8 +108,8 @@ public class intro extends javax.swing.JFrame {
     private void PlayBtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlayBtuActionPerformed
         if (!Payer1.getText().isEmpty() && !Player2.getText().isEmpty()) {
             // TODO add your handling code here:
-            GamesServer = new Server(port);
-            GamesServer.Startserver();
+          //  GamesServer = new Server(port);
+            ///GamesServer.Startserver();
             Playerone = new Clinet(ip, port);
             PlayerTow = new Clinet(ip, port);
             Playerone.StartClinet();

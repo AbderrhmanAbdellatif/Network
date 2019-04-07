@@ -479,7 +479,7 @@ public class Game extends javax.swing.JFrame {
         int turn = 1;
         Color player = Color.RED;
         boolean winner = false;
-
+        int pos=0;
         //play a turn
         while (winner == false && turn <= 42) {
 
@@ -487,17 +487,17 @@ public class Game extends javax.swing.JFrame {
 
             do {
                 display();
-                JOptionPane.showMessageDialog(this, "Player  choose a column: ");
-                ServerGUI.ListModelServer.getElementAt(0);
+                pos=Integer.parseInt(MyBasicServerGui.lmodel.getElementAt(0).toString());
+                
                 //validate play
-                validPlay = validate(play);
+                validPlay = validate(pos);
 
             } while (validPlay == false);
 
             //drop the checker
             for (int row = grid.length - 1; row >= 0; row--) {
-                if (grid[row][play].getBackground().equals(Color.white)) {
-                    buttonFunction(grid[row][play], player);
+                if (grid[row][pos].getBackground().equals(Color.white)) {
+                    buttonFunction(grid[row][pos], player);
                     JOptionPane.showMessageDialog(this, " Adder you chose ");
 
                     break;
@@ -556,8 +556,12 @@ public class Game extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        // TODO add your handling code here:
-        intro.GamesServer.StopServer();
+        try {
+            // TODO add your handling code here:
+            intro.GamesServer.StopServer();
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ExitActionPerformed
 
     public void display() {
