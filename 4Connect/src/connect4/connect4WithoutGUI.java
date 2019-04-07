@@ -27,7 +27,7 @@ public class connect4WithoutGUI {
 			}
 		}
 		
-		int turn = 1;
+ 		int turn = 1;
 		char player = 'R';
 		boolean winner = false;		
 		

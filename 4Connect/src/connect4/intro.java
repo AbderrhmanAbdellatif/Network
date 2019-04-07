@@ -25,7 +25,7 @@ public class intro extends javax.swing.JFrame {
     static Server GamesServer;//servee of game
     final String ip = "127.0.0.1";//ip
     final int port = 1234;//port
-
+    
     public intro() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -106,8 +106,8 @@ public class intro extends javax.swing.JFrame {
         if (!Payer1.getText().isEmpty() && !Player2.getText().isEmpty()) {
             try {
                 // TODO add your handling code here:
-                  GamesServer = new Server(port);
-                  GamesServer.Startserver();
+                GamesServer = new Server(port);
+                GamesServer.Startserver();
                 Playerone = new Clinet(ip, port);
                 PlayerTow = new Clinet(ip, port);
                 Playerone.StartClinet();
@@ -118,7 +118,7 @@ public class intro extends javax.swing.JFrame {
                 Logger.getLogger(intro.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this," you  to fill  all the text file ");
+            JOptionPane.showMessageDialog(this, " you  to fill  all the text file ");
         }
 
 
