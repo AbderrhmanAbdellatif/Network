@@ -58,15 +58,17 @@ public class MyBasicClient {
         cInStream = new ObjectInputStream(cSocket.getInputStream());
         ListenClientThread listenThread = new ListenClientThread(this);
         listenThread.start();
-                
+
     }
 
     public void closeClient() throws IOException {
         cSocket.close();
     }
-    
-    public void sendMessage(Object message) throws IOException{
+
+    public void sendMessage(Object message) throws IOException {
         cOutStream.writeObject(message);
     }
-    
+
+ 
+
 }
