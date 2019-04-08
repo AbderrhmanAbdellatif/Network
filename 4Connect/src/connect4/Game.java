@@ -501,7 +501,7 @@ public class Game extends javax.swing.JFrame {
                 pos = play;
                 //validate play
                 JOptionPane.showMessageDialog(this, " select you colum ");
-
+                 
                 validPlay = validate(pos);
 
             } while (validPlay == false);
@@ -566,7 +566,7 @@ public class Game extends javax.swing.JFrame {
                 }
             } else {
                 try {
-                    intro.Playerone.MesajGonder(play);// ikinci  oyuncu mmesaj server gonderiyor
+                    intro.PlayerTow.MesajGonder(play);// ikinci  oyuncu mmesaj server gonderiyor
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, "server is disconnect");
                 }
