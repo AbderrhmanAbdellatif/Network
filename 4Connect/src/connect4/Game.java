@@ -553,6 +553,8 @@ public class Game extends javax.swing.JFrame {
 
     private void SelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectActionPerformed
         // TODO add your handling code here:
+        
+        // her clinet icin colum select icin
         try {
             size++;
             play = Integer.parseInt(ComboBoxcolum.getSelectedItem().toString()) - 1;
@@ -591,8 +593,7 @@ public class Game extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void display() {
-        // System.out.println(" 0 1 2 3 4 5 6");
-        // System.out.println("---------------");
+        // show all my update in button
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length; col++) {
                 buttonFunction(grid[row][col], grid[row][col].getBackground());
