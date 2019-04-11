@@ -604,14 +604,14 @@ public class Game extends javax.swing.JFrame {
             play = Integer.parseInt(ComboBoxcolum.getSelectedItem().toString()) - 1;
             if (size % 2 == 1) {
                 try {
-                    intro.Playerone.MesajGonder(play);// birinci oyuncu mmesaj server gonderiyor
+                    intro.Playerone.MesajGonder("column is :" + play + " player one is :" + this.Player1.getText());// birinci oyuncu mmesaj server gonderiyor
                     serverdurumu = true;
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, "server is disconnect");
                 }
             } else {
                 try {
-                    intro.PlayerTow.MesajGonder(play);// ikinci  oyuncu mmesaj server gonderiyor
+                    intro.PlayerTow.MesajGonder("column is :" + play + " player tow is :" + this.Player2.getText());// ikinci  oyuncu mmesaj server gonderiyor
                     serverdurumu = true;
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, "server is disconnect");
@@ -619,7 +619,7 @@ public class Game extends javax.swing.JFrame {
 
             }
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(this, ex);
+            JOptionPane.showMessageDialog(this, "server disconnected");
         }
 
     }//GEN-LAST:event_SelectActionPerformed
@@ -627,17 +627,16 @@ public class Game extends javax.swing.JFrame {
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         // TODO add your handling code here:
 
-       
         this.setVisible(false);
     }//GEN-LAST:event_ExitActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       for (int i = 0; i < grid.length; i++) {
-                for (int j = 0; j < grid[0].length; j++) {
-                    grid[i][j].setBackground(Color.white);
-                }
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                grid[i][j].setBackground(Color.white);
             }
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

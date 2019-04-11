@@ -40,7 +40,7 @@ public class Server {
         }
     }
     public ServerSocket serverSocket;//server icin bir soket
-    public ArrayList<SoketClinetThread> soketClinetThreads;// gelen clinet listisi
+    public static ArrayList<SoketClinetThread> soketClinetThreads;// gelen clinet listisi
     public ListenServerThread listenServerThread;
     
     public Server(int port) {

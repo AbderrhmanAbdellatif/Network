@@ -36,6 +36,7 @@ public class sClient {
                     Object rMessage = this.client.cInStream.readObject();
                      //System.out.println(rMessage.toString());
                      ServerGUI.defaultListModel.addElement(rMessage.toString());
+                     
                 }
             } catch (IOException ex) {
                 Logger.getLogger(sClient.class.getName()).log(Level.SEVERE, null, ex);
