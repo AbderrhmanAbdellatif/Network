@@ -540,7 +540,7 @@ public class Game extends javax.swing.JFrame {
 
                 do {
                     display();
-                    pos = play;
+                    pos = play;//gelen colun kontrul ediyor
                     //validate play
                     //   JOptionPane.showMessageDialog(this, " select you colum ");
 
@@ -551,7 +551,7 @@ public class Game extends javax.swing.JFrame {
                 //drop the checker
                 for (int row = grid.length - 1; row >= 0; row--) {
                     if (grid[row][pos].getBackground().equals(Color.white)) {
-                        buttonFunction(grid[row][pos], player);
+                        buttonFunction(grid[row][pos], player);//burasi ekliyor
                         JOptionPane.showMessageDialog(this, " Add your color ");
                         break;
                     }
@@ -561,7 +561,7 @@ public class Game extends javax.swing.JFrame {
                 winner = isWinner(player);
 
                 //switch players
-                if (Color.RED.equals(player)) {
+                if (Color.RED.equals(player)) { // sira gore renki veriyor
                     player = Color.blue;
                     color.setText("Blue");
                 } else {
@@ -590,7 +590,7 @@ public class Game extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                grid[i][j].setBackground(Color.white);
+                grid[i][j].setBackground(Color.white);//game resatlemek icin
             }
         }
     }//GEN-LAST:event_b32ActionPerformed
@@ -604,6 +604,7 @@ public class Game extends javax.swing.JFrame {
             play = Integer.parseInt(ComboBoxcolum.getSelectedItem().toString()) - 1;
             if (size % 2 == 1) {
                 try {
+                    // birinci clinet icin
                     intro.Playerone.MesajGonder("column is :" + play + " player one is :" + this.Player1.getText());// birinci oyuncu mmesaj server gonderiyor
                     serverdurumu = true;
                 } catch (IOException ex) {

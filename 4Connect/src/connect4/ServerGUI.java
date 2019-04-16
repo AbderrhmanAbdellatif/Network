@@ -40,7 +40,6 @@ public class ServerGUI extends javax.swing.JFrame {
         SetServerbtn = new javax.swing.JButton();
         StartServerBtn = new javax.swing.JButton();
         stopServerBtn = new javax.swing.JButton();
-        SendBroadcastBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         clinetlistis = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
@@ -68,13 +67,6 @@ public class ServerGUI extends javax.swing.JFrame {
             }
         });
 
-        SendBroadcastBtn.setText("Send Broadcast");
-        SendBroadcastBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SendBroadcastBtnActionPerformed(evt);
-            }
-        });
-
         jScrollPane3.setViewportView(clinetlistis);
 
         jLabel1.setText("player :");
@@ -86,20 +78,14 @@ public class ServerGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(52, 52, 52)
+                        .addComponent(Port, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(Port, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(StartServerBtn)
-                                    .addComponent(SetServerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(stopServerBtn))
-                                .addGap(118, 118, 118))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(SendBroadcastBtn)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(StartServerBtn)
+                            .addComponent(SetServerbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stopServerBtn))
+                        .addGap(118, 118, 118))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)))
@@ -120,9 +106,7 @@ public class ServerGUI extends javax.swing.JFrame {
                 .addComponent(StartServerBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stopServerBtn)
-                .addGap(17, 17, 17)
-                .addComponent(SendBroadcastBtn)
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,10 +133,6 @@ public class ServerGUI extends javax.swing.JFrame {
             this.server.StopServer();
         
     }//GEN-LAST:event_stopServerBtnActionPerformed
-
-    private void SendBroadcastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SendBroadcastBtnActionPerformed
-       
-    }//GEN-LAST:event_SendBroadcastBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,7 +172,6 @@ public class ServerGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Port;
-    private javax.swing.JButton SendBroadcastBtn;
     private javax.swing.JButton SetServerbtn;
     private javax.swing.JButton StartServerBtn;
     public static javax.swing.JList<String> clinetlistis;
