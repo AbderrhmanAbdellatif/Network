@@ -15,11 +15,9 @@ public class Okuma {
             String word = mainFile.next();
             while (ignoreFile.hasNext()) {
                 String ignore = ignoreFile.next();
-                if (0 != stringCompare(word, ignore) && !word.startsWith("<") && word.length()>4) { // < baslmiyor 
+                if (0 != stringCompare(word, ignore) && !word.startsWith("<") && word.length() > 4) {
                     durum = true;
-
-                } 
-                else {
+                } else {
                     durum = false;
                     break;
                 }
@@ -27,15 +25,14 @@ public class Okuma {
             }
             if (durum) {
                 System.out.println(word);
-               // ignoreList = new File("ignoreList.txt");
-               // ignoreFile = new Scanner(ignoreList);
+                // ignoreList = new File("ignoreList.txt");
+                // ignoreFile = new Scanner(ignoreList);
                 durum = false;
             }
-             ignoreFile = new Scanner(ignoreList);
-               
+            ignoreFile = new Scanner(ignoreList);
+
         }
     }
-
 
     public static int stringCompare(String str1, String str2) {
 
