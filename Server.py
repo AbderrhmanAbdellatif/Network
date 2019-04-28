@@ -13,8 +13,6 @@ class Client(Thread):
         self.port = port
 		self.connection=connection
 		self.isRunning=False
-
-
 	def workIt(self):
 		self.isRunning=True
 		self.start() #thread nesnesinde run fonksiyonunu çalıştırır
